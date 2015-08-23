@@ -12,25 +12,33 @@ end
 template '/home/vagrant/README_SPRING_IDE.txt' do 
   source 'README_SPRING_IDE.txt.erb'
   mode "0644"
+  user 'vagrant'
+  group 'vagrant'
   only_if { ::File.exists?('/home/vagrant') }
 end
 
 template '/home/vagrant/chef_spring_ide_attribute_values.txt' do 
   source 'attribute_values.txt.erb'
   mode "0644"
+  user 'vagrant'
+  group 'vagrant'
   only_if { ::File.exists?('/home/vagrant') }
 end
 
 template '/home/vagrant/startSpringIDE.sh' do 
   source 'startSpringIDE.sh.erb'
   mode "0777"
+  user 'vagrant'
+  group 'vagrant'
   only_if { ::File.exists?('/home/vagrant') }
 end
 
 directory node['df_spring_ide']['local_dir'] do 
-    mode "0755"
-    recursive true
-    action :create 
+  mode "0755"
+  recursive true
+  user 'vagrant'
+  group 'vagrant'
+  action :create 
 end
 
 
